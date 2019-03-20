@@ -26,10 +26,24 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib
 	compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
 	compile('org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc3:1.16')
-	//compile("org.mariadb.jdbc:mariadb-java-client")
-	 compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.0.4.RELEASE'
+	compile("org.mariadb.jdbc:mariadb-java-client")
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.0.4.RELEASE'
     compile('com.google.code.gson:gson:2.8.2')
     compileOnly('org.projectlombok:lombok') //lombok
-    //compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager
+	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.3.6.Final'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.6.Final'
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	compile('org.springframework.boot:spring-boot-starter-security') 
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
+	compile group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.1.1.RELEASE'
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
+	
+
+    
 }
