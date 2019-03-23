@@ -6,7 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "users", uniqueConstraints = {
+@Table(name = "ecomusers", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
 })
 public class User {
@@ -29,13 +29,24 @@ public class User {
     @JsonIgnore
     private String password;
 
+    @Column(nullable=true)
+    private String role;
+    
     @NotNull
     @Enumerated(EnumType.STRING)
     private AuthProvider provider;
 
     private String providerId;
 
-    public Long getId() {
+    public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Long getId() {
         return id;
     }
 
