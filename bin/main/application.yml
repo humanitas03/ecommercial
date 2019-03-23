@@ -37,6 +37,7 @@ spring:
               scope:
                 - user:email
                 - read:user
+            
           provider:
             facebook:
               authorizationUri: https://www.facebook.com/v3.0/dialog/oauth

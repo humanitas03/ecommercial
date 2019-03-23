@@ -1,5 +1,7 @@
 package go.Shop.com.User.payload;
 
+import java.util.Date;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -23,6 +25,7 @@ public class SignUpRequest {
     private String password;
     
     private String role;
+    
     
     
 }

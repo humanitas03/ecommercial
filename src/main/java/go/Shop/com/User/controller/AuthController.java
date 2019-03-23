@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import go.Shop.com.User.exception.BadRequestException;
 import go.Shop.com.User.model.AuthProvider;
 import go.Shop.com.User.model.User;
+import go.Shop.com.User.model.UserRole;
 import go.Shop.com.User.payload.ApiResponse;
 import go.Shop.com.User.payload.AuthResponse;
 import go.Shop.com.User.payload.LoginRequest;
@@ -71,9 +72,9 @@ public class AuthController {
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(signUpRequest.getPassword());
         user.setProvider(AuthProvider.local);
-        user.setRole(signUpRequest.getRole());
-
+        user.setRole(UserRole.User);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRegdate(user.getRegdate());
 
         User result = userRepository.save(user);
 

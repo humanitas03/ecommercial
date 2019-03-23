@@ -43,6 +43,9 @@ dependencies {
 	compile group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.1.1.RELEASE'
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
 	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
+	// https://mvnrepository.com/artifact/com.github.scribejava/scribejava-core
+	compile group: 'com.github.scribejava', name: 'scribejava-core', version: '5.5.0'
+	
 	
 
     
