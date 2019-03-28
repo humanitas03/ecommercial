@@ -1,6 +1,7 @@
 package go.Shop.com.User.controller;
 
 import java.net.URI;
+import java.util.Collections;
 
 import javax.validation.Valid;
 
@@ -17,14 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import go.Shop.com.User.exception.AppException;
 import go.Shop.com.User.exception.BadRequestException;
 import go.Shop.com.User.model.AuthProvider;
+import go.Shop.com.User.model.Role;
 import go.Shop.com.User.model.User;
 import go.Shop.com.User.model.UserRole;
 import go.Shop.com.User.payload.ApiResponse;
 import go.Shop.com.User.payload.AuthResponse;
 import go.Shop.com.User.payload.LoginRequest;
 import go.Shop.com.User.payload.SignUpRequest;
+import go.Shop.com.User.repository.RoleRepository;
 import go.Shop.com.User.repository.UserRepository;
 import go.Shop.com.User.security.TokenProvider;
 
@@ -43,6 +47,10 @@ public class AuthController {
 
     @Autowired
     private TokenProvider tokenProvider;
+    
+    @Autowired
+    RoleRepository roleRepository;
+
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -65,14 +73,19 @@ public class AuthController {
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
             throw new BadRequestException("Email address already in use.");
         }
-
+        Role userRole = roleRepository.findByName(UserRole.User)
+                .orElseThrow(() -> new AppException("User Role not set."));
         // Creating user's account
         User user = new User();
         user.setName(signUpRequest.getName());
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(signUpRequest.getPassword());
         user.setProvider(AuthProvider.local);
-        user.setRole(UserRole.User);
+        
+        //security Role 구분
+       // user.setRoles(Collections.singleton(userRole));//Join한 유저 3-28 pm2시 작업....
+        
+        
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRegdate(user.getRegdate());
 

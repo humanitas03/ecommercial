@@ -5,13 +5,29 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
-group = 'go.moa.com'
+//create a single Jar with all dependencies
+
+
+
+
+group = 'go.Shop.com'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
 }
+jar {
+	manifest {
+		attributes 'Main-Class' : 'go.Shop.com.EComApplication', 'Version' : 1.0
+	}
+	archiveName "EComApplication.jar"
+	dependsOn configurations.runtime
+    from {
+        configurations.compile.collect {it.isDirectory()? it: zipTree(it)}
+    }
+}
+ 
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -41,10 +57,14 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security') 
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
 	compile group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.1.1.RELEASE'
-	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
-	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
+	
 	// https://mvnrepository.com/artifact/com.github.scribejava/scribejava-core
 	compile group: 'com.github.scribejava', name: 'scribejava-core', version: '5.5.0'
+	//jwt
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.7'
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
 	
 	
 
