@@ -73,8 +73,8 @@ public class AuthController {
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
             throw new BadRequestException("Email address already in use.");
         }
-        Role userRole = roleRepository.findByName(UserRole.User)
-                .orElseThrow(() -> new AppException("User Role not set."));
+//        Role userRole = roleRepository.findByName(UserRole.User)
+//                .orElseThrow(() -> new AppException("User Role not set."));
         // Creating user's account
         User user = new User();
         user.setName(signUpRequest.getName());

@@ -56,7 +56,6 @@ class SignupForm extends Component {
         this.state = {
             name: '',
             email: '',
-            role: '',
             password: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -86,7 +85,7 @@ class SignupForm extends Component {
             Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');            
         });
     }
-
+ 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
@@ -100,11 +99,7 @@ class SignupForm extends Component {
                         className="form-control" placeholder="Email"
                         value={this.state.email} onChange={this.handleInputChange} required/>
                 </div>
-                <div className="form-item">
-                    <input type="text" name="role" 
-                        className="form-control" placeholder="role"
-                        value={this.state.role} onChange={this.handleInputChange} required/>
-                </div>
+              
                 <div className="form-item">
                 
                     <input type="password" name="password" 
