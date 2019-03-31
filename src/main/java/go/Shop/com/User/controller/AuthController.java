@@ -83,12 +83,13 @@ public class AuthController {
         user.setProvider(AuthProvider.local);
         
         //security Role 구분
-       // user.setRoles(Collections.singleton(userRole));//Join한 유저 3-28 pm2시 작업....
+        Role userRole = roleRepository.findByName(UserRole.User)
+                .orElseThrow(() -> new AppException("User Role not set."));
         
-        
+        user.setRoles(Collections.singleton(userRole));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRegdate(user.getRegdate());
-
+        user.setCreatedAt(user.getCreatedAt());
+        
         User result = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder

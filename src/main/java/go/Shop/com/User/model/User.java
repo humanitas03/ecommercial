@@ -21,8 +21,13 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.NaturalId;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import go.Shop.com.User.model.Audit.DateAudit;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,8 +37,10 @@ import lombok.Setter;
 })
 @Setter
 @Getter
-public class User {
-    @Id
+@AllArgsConstructor
+public class User extends DateAudit{
+   
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -53,18 +60,20 @@ public class User {
     private String password;
 
 //    @Column(nullable=true)
-//    private Set<Role> roles = new HashSet<>();
-    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "role_connect",
+    joinColumns = @JoinColumn(name = "ecomusers_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+     
     @NotNull
     @Enumerated(EnumType.STRING)
     private AuthProvider provider;
 
     private String providerId;
-    
-    @Column(nullable=false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date regdate=new Date();
 
-  
+    public User() {
+	}
+ 
     
 }
