@@ -48,10 +48,19 @@ class AppHeader extends Component {
                                                 회원페이지
                                                 <i class="fa fa-angle-down"></i>
                                             </a>
+                                            
+                                            { this.props.authenticated ? (
                                             <ul class="account_selection">
-                                                <li>  <NavLink to="/login">로그인<i class="fa fa-sign-in" aria-hidden="true"></i></NavLink> </li>
-                                                <li><NavLink to="/signup">가입<i class="fa fa-user-plus" aria-hidden="true"></i></NavLink></li>
-                                            </ul>
+                                                <li><NavLink to="/profile">Profile</NavLink> </li>
+                                                <li> <a onClick={this.props.onLogout}>Logout</a></li>
+                                                </ul>
+                                                ):(
+                                                    <ul class="account_selection">
+                                                    <li>  <NavLink to="/login">로그인<i class="fa fa-sign-in" aria-hidden="true"></i></NavLink> </li>
+                                                    <li><NavLink to="/signup">가입<i class="fa fa-user-plus" aria-hidden="true"></i></NavLink></li>
+                                                    </ul>
+                                                )}
+                                                
                                         </li>
                                     </ul>
                                 </div>
