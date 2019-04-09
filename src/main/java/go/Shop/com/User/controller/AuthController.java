@@ -22,9 +22,12 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import go.Shop.com.User.config.BuildDescription;
 import go.Shop.com.User.exception.AppException;
 import go.Shop.com.User.exception.BadRequestException;
+import go.Shop.com.User.model.ActionCode;
 import go.Shop.com.User.model.AuthProvider;
+import go.Shop.com.User.model.Description;
 import go.Shop.com.User.model.Role;
 import go.Shop.com.User.model.User;
 import go.Shop.com.User.model.UserHistory;
@@ -71,12 +74,16 @@ public class AuthController {
         /*시큐리티 세션정보...최성준 2019-04-09*/
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        BuildDescription builddesc;
         SecurityContextHolder.getContext().setAuthentication(authentication);
         User user = new User();
         /*회원히스토리 기록*/
         UserHistory uh=new UserHistory();
         uh.setIp(req.getRemoteAddr());
         uh.setEmail(authentication.getName());
+        uh.setUrl(req.getRequestURI());
+        uh.setDescription(BuildDescription.get(Description.LOGIN,authentication.getName()));
+        uh.setActionCode(ActionCode.LOGIN);
         userRepository.save(uh);
         
         String token = tokenProvider.createToken(authentication);

@@ -1,5 +1,7 @@
 package go.Shop.com.User.model;
 
+import java.time.Instant;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.CreatedDate;
 
 import go.Shop.com.User.model.Audit.DateAudit;
 import lombok.AllArgsConstructor;
