@@ -1,5 +1,4 @@
 package go.Shop.com.User.model;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,20 +13,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import go.Shop.com.User.model.Audit.DateAudit;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,7 +47,7 @@ public class User extends DateAudit{
     private String email;
 
     private String imageUrl;
-
+ 
     @Column(nullable = false)
     private Boolean emailVerified = false;
 

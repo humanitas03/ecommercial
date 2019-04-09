@@ -58,7 +58,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security') 
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
 	compile group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.1.1.RELEASE'
-	
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
 	// https://mvnrepository.com/artifact/com.github.scribejava/scribejava-core
 	compile group: 'com.github.scribejava', name: 'scribejava-core', version: '5.5.0'
 	//jwt
