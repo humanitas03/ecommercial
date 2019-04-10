@@ -13,7 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,8 @@ import go.Shop.com.User.model.Role;
 import go.Shop.com.User.model.User;
 import go.Shop.com.User.model.UserHistory;
 import go.Shop.com.User.model.UserRole;
+import go.Shop.com.User.model.mail.EmailConfirmVO;
+import go.Shop.com.User.model.mail.InUserSignUpVO;
 import go.Shop.com.User.payload.ApiResponse;
 import go.Shop.com.User.payload.AuthResponse;
 import go.Shop.com.User.payload.LoginRequest;
@@ -39,6 +42,7 @@ import go.Shop.com.User.payload.SignUpRequest;
 import go.Shop.com.User.repository.RoleRepository;
 import go.Shop.com.User.repository.UserRepository;
 import go.Shop.com.User.security.TokenProvider;
+import go.Shop.com.User.util.TempKey;
 
 @RestController
 @RequestMapping("/auth")
@@ -59,7 +63,13 @@ public class AuthController {
     @Autowired
     RoleRepository roleRepository;
 
-
+    /**
+	 * 사용자 로그인
+	 * @param locale
+	 * @param emailConfirmVO
+	 * @return
+	 * @throws Exception
+	 */
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -71,8 +81,6 @@ public class AuthController {
         );
         /*ip주소 가져오는 객체정보 정확하진 않음*/
         HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
-        /*시큐리티 세션정보...최성준 2019-04-09*/
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         BuildDescription builddesc;
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -89,9 +97,16 @@ public class AuthController {
         String token = tokenProvider.createToken(authentication);
         return ResponseEntity.ok(new AuthResponse(token));
     }
-
+    /**
+	 * 사용자 회원가입
+	 * @param locale
+	 * @param emailConfirmVO
+	 * @return
+	 * @throws Exception
+	 */
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+    @Transactional(propagation=Propagation.REQUIRED, readOnly=false, rollbackForClassName="Exception")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest,InUserSignUpVO inUserSignUpVO) {
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
             throw new BadRequestException("Email address already in use.");
         }
@@ -118,8 +133,16 @@ public class AuthController {
                 .fromCurrentContextPath().path("/user/me")
                 .buildAndExpand(result.getId()).toUri();
 
+     // 사용자 이메일 인증 정보처리
+     		TempKey tempKey = new TempKey();
+     		String key = tempKey.getKey(50);
+     		EmailConfirmVO emailConfirmVO = new EmailConfirmVO();
+     		emailConfirmVO.setEmail(user.getEmail());
+     		emailConfirmVO.setUserTypeCode(inUserSignUpVO.getUserTypeCode());
+     		emailConfirmVO.setEmailKey(key);
+        
         return ResponseEntity.created(location)
                 .body(new ApiResponse(true, "User registered successfully@"));
     }
-
+    
 }

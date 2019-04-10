@@ -56,3 +56,10 @@ app:
       - http://localhost:3000/oauth2/redirect
       - myandroidapp://oauth2/redirect
       - myiosapp://oauth2/redirect
+      
+mail:
+    host: smtp.gmail.com
+    port: 8080
+    username: myemail@gmail.com
+    password: mypassword
+    

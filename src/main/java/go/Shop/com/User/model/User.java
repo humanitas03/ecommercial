@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import go.Shop.com.User.model.Audit.DateAudit;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,20 +38,30 @@ public class User extends DateAudit{
    
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(value="순서")
     private Long id;
 
     @Column(nullable = false)
+    @ApiModelProperty(value="이름")
     private String name;
 
     @Email
     @Column(nullable = false)
+    @ApiModelProperty(value="유저id")
     private String email;
 
+    @ApiModelProperty(value="유저이미지")
     private String imageUrl;
  
     @Column(nullable = false)
     private Boolean emailVerified = false;
 
+    @ApiModelProperty(value="사용자 상태")
+	private String statusCode = "EMAIL_CONFIRM";
+    
+    @ApiModelProperty(value="사용자 타입")
+	private String userTypeCode = "NORMAL";
+    
     @JsonIgnore
     private String password;
 
@@ -67,6 +78,8 @@ public class User extends DateAudit{
 
     private String providerId;
 
+	
+	
     public User() {
 	}
  

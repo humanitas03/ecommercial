@@ -53,6 +53,7 @@ class AppHeader extends Component {
                                             <ul class="account_selection">
                                                 <li><NavLink to="/profile">Profile</NavLink> </li>
                                                 <li> <a onClick={this.props.onLogout}>Logout</a></li>
+                                                <li><NavLink to="/MyInfo">내정보</NavLink> </li>
                                                 </ul>
                                                 ):(
                                                     <ul class="account_selection">
