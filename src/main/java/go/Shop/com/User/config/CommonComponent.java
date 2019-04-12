@@ -8,8 +8,8 @@ import lombok.Getter;
 
 @Getter
 public class CommonComponent {
-	@Autowired
-	private HandlerAsync async;
+//	@Autowired
+//	private HandlerAsync async;
 
 	@Autowired
 	private MessageSource msg;

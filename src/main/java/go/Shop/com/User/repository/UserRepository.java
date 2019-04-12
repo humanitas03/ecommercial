@@ -10,6 +10,7 @@ import go.Shop.com.Common.Model.ResponseVO;
 import go.Shop.com.User.model.User;
 import go.Shop.com.User.model.UserHistory;
 import go.Shop.com.User.model.mail.EmailConfirmVO;
+import go.Shop.com.User.model.mail.InEmailConfirmVO;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -33,6 +34,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	 * @return
 	 */
 	UserHistory save(UserHistory uh);
+	/**
+	 * 이메일 검증 --최성준
+	 * @param emailConfirmVO
+	 * @return
+	 */
+	InEmailConfirmVO save(InEmailConfirmVO inEmailConfirmSendVO);
 
 	
 }
