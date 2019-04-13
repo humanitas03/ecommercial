@@ -8,6 +8,13 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
+
+/**
+* Cors설정(Front단과 통신)
+* 인터셉터 설정
+* @author 최성준
+* @version 2019.04.10 v1.0
+*/
 @Configuration
 @EnableTransactionManagement
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -20,6 +27,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     	localeChangeInterceptor.setParamName("lang");
     	return localeChangeInterceptor;
     }
+    
+ 
     
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

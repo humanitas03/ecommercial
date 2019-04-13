@@ -20,6 +20,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+* 유저기록 테이블
+* @author 최성준
+* @version 2019.04.10 v1.0
+*/
 @Entity
 @Table(name = "user_history")
 @Setter

@@ -18,8 +18,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Created by rajeevkumarsingh on 01/08/17.
- */
+* 유저 타입 테이블
+* @author 최성준
+* @version 2019.04.10 v1.0
+*/
 @Entity
 @Table(name = "user_roles")
 @Getter

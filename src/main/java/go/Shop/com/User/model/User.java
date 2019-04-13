@@ -26,6 +26,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+* 유저테이블
+* @author 최성준
+* @version 2019.04.10 v1.0
+*/
 @Entity
 @Table(name = "ecomusers", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")

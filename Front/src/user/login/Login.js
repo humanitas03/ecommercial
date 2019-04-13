@@ -26,7 +26,7 @@ class Login extends Component {
     }
     
     render() {
-        if(this.props.authenticated) {
+        if(this.props.authenticNated) {
             return <Redirect
                 to={{
                 pathname: "/",
@@ -97,6 +97,7 @@ class LoginForm extends Component {
             localStorage.setItem(ACCESS_TOKEN, response.accessToken);
             Alert.success("You're successfully logged in!");
             this.props.history.replace("/");
+            
             window.location.href = '/'; 
         }).catch(error => {
             Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');

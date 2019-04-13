@@ -6,6 +6,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+* SMTP Vo
+* @author 최성준
+* @version 2019.04.10 v1.0
+*/
 @Getter
 @Setter
 @ToString
