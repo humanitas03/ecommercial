@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -59,13 +58,11 @@ public class User extends DateAudit{
     @ApiModelProperty(value="사용자 상태")
 	private String statusCode = "EMAIL_CONFIRM";
     
-    @ApiModelProperty(value="사용자 타입")
-	private String userTypeCode = "NORMAL";
     
     @JsonIgnore
     private String password;
 
-//    @Column(nullable=true)
+    @Column(nullable=true)
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "role_connect",
     joinColumns = @JoinColumn(name = "ecomusers_id"),

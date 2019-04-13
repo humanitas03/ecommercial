@@ -25,7 +25,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import go.Shop.com.User.config.BuildDescription;
-import go.Shop.com.User.config.CommonComponent;
 import go.Shop.com.User.config.EmailSender;
 import go.Shop.com.User.exception.AppException;
 import go.Shop.com.User.exception.BadRequestException;
@@ -38,8 +37,6 @@ import go.Shop.com.User.model.User;
 import go.Shop.com.User.model.UserHistory;
 import go.Shop.com.User.model.UserRole;
 import go.Shop.com.User.model.mail.EmailConfirmVO;
-import go.Shop.com.User.model.mail.InEmailConfirmVO;
-import go.Shop.com.User.model.mail.InUserSignUpVO;
 import go.Shop.com.User.payload.ApiResponse;
 import go.Shop.com.User.payload.AuthResponse;
 import go.Shop.com.User.payload.LoginRequest;
@@ -139,37 +136,35 @@ public class AuthController {
         user.setCreatedAt(user.getCreatedAt());
 //    
 //        // 사용자 이메일 인증 정보처리
-// 		TempKey tempKey = new TempKey();
-// 		String key = tempKey.getKey(50);
-// 		EmailConfirmVO emailConfirmVO = new EmailConfirmVO();
-// 		emailConfirmVO.setEmail(user.getEmail());
-// 		emailConfirmVO.setUserTypeCode(inUserSignUpVO.getUserTypeCode());
-// 		emailConfirmVO.setEmailKey(key);
+ 		TempKey tempKey = new TempKey();
+ 		String key = tempKey.getKey(50);
+ 		EmailConfirmVO emailConfirmVO = new EmailConfirmVO();
+ 		emailConfirmVO.setEmail(user.getEmail());
+ 		emailConfirmVO.setUserTypeCode(user.getStatusCode());
+ 		emailConfirmVO.setEmailKey(key);
         
 // 		System.out.println("==================");
 // 		System.out.println(emailConfirmVO);
 // 		System.out.println("==================");
         User result = userRepository.save(user);
-
+        userRepository.save(emailConfirmVO);
 //        CommonComponent common=new CommonComponent();
 //        
 //		inEmailConfirmSendVO.setEmail(user.getEmail());
 //		inEmailConfirmSendVO.setEmailKey(key);
 //		inEmailConfirmSendVO.setEmailConfirmUrl(user.getEmail());
-//		userRepository.save(inEmailConfirmSendVO);
+		
 		
 		email.setContent("회원가입을 축하드립 니다.");
 		email.setReceiver(user.getEmail());
 		email.setSubject(user.getEmail()+"님 회원가입메일입니다.");
 
-		System.out.println("Email인증"+email);
 			try {
 				emailSender.SendEmail(user);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		
-		System.out.println("다음 경로....");
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/user/me")
                 .buildAndExpand(result.getId()).toUri();

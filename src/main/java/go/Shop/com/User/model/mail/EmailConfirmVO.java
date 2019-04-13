@@ -1,16 +1,23 @@
 package go.Shop.com.User.model.mail;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.ForeignKey;
 
 import go.Shop.com.User.model.User;
 import go.Shop.com.User.model.Audit.DateAudit;
@@ -25,9 +32,7 @@ import lombok.Getter;
  */
 
 @Entity
-@Table(name = "user_mailconfirm", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email")
-})
+@Table(name = "user_mailconfirm")
 @Getter
 @Setter
 @ToString
@@ -39,6 +44,8 @@ public class EmailConfirmVO extends DateAudit{
 	    private Long id;
 		@ApiModelProperty(value="키값")
 		private String emailKey;
+
+		@Column(nullable = false)
 		@ApiModelProperty(value="유저ID")
 		private String email;
 		@ApiModelProperty(value="사용자 타입")
