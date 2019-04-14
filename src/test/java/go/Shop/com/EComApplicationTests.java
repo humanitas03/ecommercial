@@ -1,4 +1,4 @@
-package go.Shop.com;
+/*package go.Shop.com;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,3 +14,4 @@ public class EComApplicationTests {
 	}
 
 }
+*/
