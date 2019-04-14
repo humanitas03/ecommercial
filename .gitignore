@@ -1,8 +1,11 @@
 HELP.md
 .gradle
-/build/
+/build/*
 !gradle/wrapper/gradle-wrapper.jar
-/bin*
+/bin/*
+/Front/module/*
+/Front/package-lock.json
+/Front/yarn.lock
 ### STS ###
 .apt_generated
 .classpath
