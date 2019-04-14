@@ -1,4 +1,4 @@
-package go.Shop.com.User.model.Audit;
+package go.Shop.com.Common.Model.Audit;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

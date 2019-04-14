@@ -1,4 +1,4 @@
-package go.Shop.com.User.model.Audit;
+package go.Shop.com.Common.Model.Audit;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;

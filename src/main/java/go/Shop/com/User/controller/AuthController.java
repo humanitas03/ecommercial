@@ -90,6 +90,7 @@ public class AuthController {
         HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
 
         BuildDescription builddesc;
+        /*시큐리티에서 관리하는 세션정보?*/
         SecurityContextHolder.getContext().setAuthentication(authentication);
         User user = new User();
         /*회원히스토리 기록*/

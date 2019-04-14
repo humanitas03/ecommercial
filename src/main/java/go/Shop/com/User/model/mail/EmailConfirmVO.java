@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import go.Shop.com.User.model.Audit.DateAudit;
+import go.Shop.com.Common.Model.Audit.DateAudit;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;

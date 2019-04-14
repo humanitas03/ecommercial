@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
 
-import go.Shop.com.User.model.Audit.DateAudit;
+import go.Shop.com.Common.Model.Audit.DateAudit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

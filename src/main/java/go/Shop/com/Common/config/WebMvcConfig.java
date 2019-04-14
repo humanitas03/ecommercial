@@ -1,4 +1,4 @@
-package go.Shop.com.User.config;
+package go.Shop.com.Common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

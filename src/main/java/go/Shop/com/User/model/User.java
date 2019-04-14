@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import go.Shop.com.User.model.Audit.DateAudit;
+import go.Shop.com.Common.Model.Audit.DateAudit;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
