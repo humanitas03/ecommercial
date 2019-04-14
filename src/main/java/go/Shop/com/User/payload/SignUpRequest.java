@@ -14,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SignUpRequest {
+	
     @NotBlank
     private String name;
 
@@ -25,6 +26,9 @@ public class SignUpRequest {
     private String password;
     
     private String role;
+
+	public SignUpRequest() {
+	}
     
     
     

@@ -29,7 +29,7 @@ import lombok.Setter;
 @Table(name = "user_history")
 @Setter
 @Getter
-@AllArgsConstructor
+@AllArgsConstructor 
 public class UserHistory extends DateAudit{
 	
 	@Id

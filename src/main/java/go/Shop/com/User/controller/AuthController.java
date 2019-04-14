@@ -155,16 +155,18 @@ public class AuthController {
 //		inEmailConfirmSendVO.setEmailKey(key);
 //		inEmailConfirmSendVO.setEmailConfirmUrl(user.getEmail());
 		
-		
-		email.setContent("회원가입을 축하드립 니다.");
-		email.setReceiver(user.getEmail());
-		email.setSubject(user.getEmail()+"님 회원가입메일입니다.");
 
-			try {
-				emailSender.SendEmail(user);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+        /*이메일 보내는 기능 막음 
+         * 2019-04-15 최성준*/
+//		email.setContent("회원가입을 축하드립 니다.");
+//		email.setReceiver(user.getEmail());
+//		email.setSubject(user.getEmail()+"님 회원가입메일입니다.");
+//
+//			try {
+//				emailSender.SendEmail(user);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 		
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/user/me")

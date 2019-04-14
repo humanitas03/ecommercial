@@ -37,7 +37,6 @@ import lombok.Setter;
 })
 @Setter
 @Getter
-@AllArgsConstructor
 public class User extends DateAudit{
    
 	@Id
@@ -81,8 +80,8 @@ public class User extends DateAudit{
     private String providerId;
 
 	
-	
-    public User() {
+	public User() {
+		
 	}
  
     
