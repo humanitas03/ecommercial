@@ -1,5 +1,7 @@
 package go.Shop.com.Board.Model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,15 @@ import lombok.Setter;
 @Table(name="Board")
 @Getter
 @Setter
-public class Board extends DateAudit{
+public class Board extends DateAudit implements Serializable {
+
+	
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4334304340535821448L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

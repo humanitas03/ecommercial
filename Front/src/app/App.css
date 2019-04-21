@@ -6,13 +6,14 @@
     width: 2px;
 }
 
-.app {
+.app{
+    
     height: 100%;
 }
-.app-top-box {
+.app-top-box{
     height: 150px;
 }
-.app-body {
+.app-body{
     padding-top: 50px;
     height: 100%;
 }

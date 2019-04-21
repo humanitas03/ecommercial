@@ -10,55 +10,55 @@ import './styles/bootstrap4/bootstrap.min.css';
 class AppHeader extends Component {
     render() {
         return (
-            <div class="super_container">
-            <header class="header trans_300">
+            <div className="super_container">
+            <header className="header trans_300">
         
-                <div class="top_nav">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="top_nav_left">free shipping on all u.s orders over $50</div>
+                <div className="top_nav">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="top_nav_left">free shipping on all u.s orders over $50</div>
                             </div>
-                            <div class="col-md-6 text-right">
-                                <div class="top_nav_right">
-                                    <ul class="top_nav_menu">
-                                        <li class="currency">
+                            <div className="col-md-6 text-right">
+                                <div className="top_nav_right">
+                                    <ul className="top_nav_menu">
+                                        <li className="currency">
                                             
-                                            <ul class="currency_selection">
+                                            <ul className="currency_selection">
                                                 <li><a href="/">cad</a></li>
                                                 <li><a href="/">aud</a></li>
                                                 <li><a href="/">eur</a></li>
                                                 <li><a href="/">gbp</a></li>
                                             </ul>
                                         </li>
-                                        <li class="language">
+                                        <li className="language">
                                             <a href="/">
                                                 English
-                                                <i class="fa fa-angle-down"></i>
+                                                <i className="fa fa-angle-down"></i>
                                             </a>
-                                            <ul class="language_selection">
+                                            <ul className="language_selection">
                                                 <li><a href="/">French</a></li>
                                                 <li><a href="/">Italian</a></li>
                                                 <li><a href="/">German</a></li>
                                                 <li><a href="/">Spanish</a></li>
                                             </ul>
                                         </li>
-                                        <li class="account">
+                                        <li className="account">
                                             <a href="/"> 
                                                 회원페이지
-                                                <i class="fa fa-angle-down"></i>
+                                                <i className="fa fa-angle-down"></i>
                                             </a>
                                             
                                             { this.props.authenticated ? (
-                                            <ul class="account_selection">
+                                            <ul className="account_selection">
                                                 <li><NavLink to="/profile">Profile</NavLink> </li>
                                                 <li> <a onClick={this.props.onLogout}>Logout</a></li>
                                                 <li><NavLink to="/MyInfo">내정보</NavLink> </li>
                                                 </ul>
                                                 ):(
-                                                    <ul class="account_selection">
-                                                    <li>  <NavLink to="/login">로그인<i class="fa fa-sign-in" aria-hidden="true"></i></NavLink> </li>
-                                                    <li><NavLink to="/signup">가입<i class="fa fa-user-plus" aria-hidden="true"></i></NavLink></li>
+                                                    <ul className="account_selection">
+                                                    <li>  <NavLink to="/login">로그인<i className="fa fa-sign-in" aria-hidden="true"></i></NavLink> </li>
+                                                    <li><NavLink to="/signup">가입<i className="fa fa-user-plus" aria-hidden="true"></i></NavLink></li>
                                                     </ul>
                                                 )}
                                                 
@@ -70,34 +70,35 @@ class AppHeader extends Component {
                     </div>
                 </div>
         
-                <div class="main_nav_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
-                                <div class="logo_container">
+                <div className="main_nav_container">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12 text-right">
+                                <div className="logo_container">
                                     <a href="/">colo<span>shop</span></a>
                                 </div>
-                                <nav class="navbar">
-                                    <ul class="navbar_menu">
+                                <nav className="navbar">
+                                    <ul className="navbar_menu">
                                         <li><a href="/"><h2>메인</h2></a></li>
                                         <li><a href="/"><h2>판매</h2></a></li>
-                                        <li><NavLink to="/board"><h2>커뮤니티</h2></NavLink></li>
+                                        <li><a href="/"><h2>커뮤니티</h2></a></li>
                                         <li><a href="/"><h2>리뷰</h2></a></li>
                                         <li><a href="/"><h2>blog</h2></a></li>
+                                        <li><NavLink to="/board"><h2>게시판</h2></NavLink></li>
                                         <li><a href="contact.html">contact</a></li>
                                     </ul>
-                                    <ul class="navbar_user">
-                                        <li><a href="/"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                        <li><a href="/"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                                        <li class="checkout">
+                                    <ul className="navbar_user">
+                                        <li><a href="/"><i className="fa fa-search" aria-hidden="true"></i></a></li>
+                                        <li><a href="/"><i className="fa fa-user" aria-hidden="true"></i></a></li>
+                                        <li className="checkout">
                                             <a href="/">
-                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span id="checkout_items" class="checkout_items">2</span>
+                                                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                <span id="checkout_items" className="checkout_items">2</span>
                                             </a>
                                         </li>
                                     </ul>
-                                    <div class="hamburger_container">
-                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                    <div className="hamburger_container">
+                                        <i className="fa fa-bars" aria-hidden="true"></i>
                                     </div>
                                 </nav>
                             </div>

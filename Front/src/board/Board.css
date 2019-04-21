@@ -1,0 +1,41 @@
+.containerBoard{
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    margin: 10px;
+}
+.table{
+    width: 50%;
+    margin:auto;
+    text-align: center;
+}
+.table-top-div{
+    width: 50%;
+    margin:auto;
+    text-align: right;
+}
+.pagination{
+    display: inline-block;
+    
+    margin: auto;
+    margin-top: 50px;
+
+
+}
+.center {
+    text-align: center;
+    
+    
+}
+.div-form{
+    width: 50%;
+    margin: auto;
+}
+.form-group{
+    text-align: left;
+}
+.div-button{
+    width: 100%;
+    margin:auto;
+    text-align: right;
+}

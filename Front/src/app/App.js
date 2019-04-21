@@ -7,13 +7,14 @@ import AppHeader from '../common/AppHeader';
 import Home from '../home/Home';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
-import board  from '../board/board'
+import Board  from '../board/Board'
 import Profile from '../user/profile/Profile';
 import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
 import NotFound from '../common/NotFound';
 import LoadingIndicator from '../common/LoadingIndicator';
 import { getCurrentUser } from '../util/APIUtils';
 import { ACCESS_TOKEN } from '../constants';
+import BoardWrite from '../board/BoardWrite';
 import PrivateRoute from '../common/PrivateRoute';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
@@ -61,7 +62,7 @@ class App extends Component {
     Alert.success("You're safely logged out!");
   }
 
-  componentDidMount() {
+  componentWillUnmount () {
     this.loadCurrentlyLoggedInUser();
   }
 
@@ -84,8 +85,9 @@ class App extends Component {
               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
             <Route path="/signup"
               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
-            <Route path="/board" component={board}></Route>
+            <Route path="/Board" component={Board}></Route>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
+            
             <Route component={NotFound}></Route>
           </Switch>
         </div>
