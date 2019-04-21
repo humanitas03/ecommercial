@@ -1,6 +1,6 @@
 import React,{ Component }  from 'react';
 import {Route , NavLink,Switch} from 'react-router-dom';
-import { API_BASE_URL } from '../constants';
+import { API_BASE_URL ,ACCESS_TOKEN} from '../constants';
 import BoardList from './BoardList';
 import BoardFooter from './BoardFooter';
 import BoardWrite from './BoardWrite';
@@ -42,14 +42,23 @@ class Board extends Component{
     }
 
     _callAPI= async(page)=>{
-        let goPage = (page == -1  || page == undefined || page <= 0 ) ? '0' : page-1;
-        return fetch(API_BASE_URL+'/board/post/'+goPage)
+    	let goPage = (page == -1  || page == undefined || page <= 0 ) ? '0' : page-1;
+        return fetch(API_BASE_URL+'/board/post/'+goPage
+                ,{
+                "method": 'get'
+                ,headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)
+                } 
+            })
                 .then(response => response.json())
                 .catch(err => console.log(err));
     }
 
     _renderBoard = (page) => {
-        const board = this.state.board.map( (board,index) => {
+    	
+        const board = (this.state.board || []).map( (board,index) => {
             return <BoardList
                         key             = {index}
                         id              = {board.id}
@@ -60,7 +69,9 @@ class Board extends Component{
                         updatedAt       = {board.updatedAt}
                     />;
        });
-       return board;
+        return board;
+    	
+       
     }
 
     _boardNext = (page) =>{

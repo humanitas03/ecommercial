@@ -80,12 +80,11 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getEmail(),
-                        loginRequest.getPassword()
-                )
-        );
+    	UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword());
+    	result.setDetails(userRepository.findByEmail(loginRequest.getEmail()));
+    	
+    	
+        Authentication authentication = authenticationManager.authenticate(result);
         /*ip주소 가져오는 객체정보 정확하진 않음*/
         HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
 

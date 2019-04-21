@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +24,14 @@ public class BoardController {
 	
 	@RequestMapping(value="/post",method=RequestMethod.GET)
 	public List<Board> boardList() throws Exception{
+	
 		
 		return boardService.boardList();
 	}
 	
 	@RequestMapping(value="/post/{page}",method=RequestMethod.GET)
 	public Page<Board> pageBoardList(@PathVariable int page) throws Exception{
+		Object object = SecurityContextHolder.getContext().getAuthentication().getDetails();
 		
 		return boardService.pageBoardList(page);
 	}
@@ -41,6 +44,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/post",method=RequestMethod.POST)
 	public void postBoard(@RequestBody Board board) throws Exception{
+		
 		boardService.postBoard(board);
 	}
 	

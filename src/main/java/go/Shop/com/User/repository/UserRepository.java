@@ -39,6 +39,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	 * @return
 	 */
 	EmailConfirmVO save(EmailConfirmVO inEmailConfirmSendVO);
+	
 
 	
 }
