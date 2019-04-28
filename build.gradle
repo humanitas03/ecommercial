@@ -10,7 +10,7 @@ apply plugin: 'io.spring.dependency-management'
 
 
 
-group = 'go.Shop.com'
+group = 'go.shop.com'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -20,7 +20,7 @@ repositories {
 }
 jar {
 	manifest {
-		attributes 'Main-Class' : 'go.Shop.com.EComApplication', 'Version' : 1.0
+		attributes 'Main-Class' : 'go.shop.com.EComApplication', 'Version' : 1.0
 	}
 	archiveName "EComApplication.jar"
 	dependsOn configurations.runtime
