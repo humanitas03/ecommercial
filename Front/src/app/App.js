@@ -19,6 +19,7 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
+import productlist from '../product/productlist';
 
 class App extends Component {
   constructor(props) {
@@ -85,6 +86,7 @@ class App extends Component {
             <Route path="/signup"
               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
             <Route path="/board" component={board}></Route>
+            <Route path="/productlist" component={productlist}></Route>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
             <Route component={NotFound}></Route>
           </Switch>

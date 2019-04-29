@@ -1,0 +1,27 @@
+#store {
+    margin-top: 15px;
+    padding-top: 30px;
+    border-top: 1px solid #DADADA;
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #DADADA;
+  }
+  body {
+    font-family: 'Hind', sans-serif;
+    color: #4A4E5A;
+    overflow-x: hidden;
+  }  
+  
+.product.product-single .product-thumb {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  .main-btn, .primary-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+  }
