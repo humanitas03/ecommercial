@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import go.shop.com.account.model.User;
 import go.shop.com.account.model.UserHistory;
 import go.shop.com.account.model.mail.EmailConfirmVO;
-import go.shop.com.common.model.ResponseVO;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
