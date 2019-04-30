@@ -20,6 +20,7 @@ import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
 import productlist from '../product/productlist';
+import productdetail from '../product/productdetail';
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class App extends Component {
   }
 
   loadCurrentlyLoggedInUser() {
-    this.setState({
+    this.setState({ 
       loading: true
     });
 
@@ -87,6 +88,7 @@ class App extends Component {
               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
             <Route path="/board" component={board}></Route>
             <Route path="/productlist" component={productlist}></Route>
+            <Route path="/productdetail" component={productdetail}></Route>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
             <Route component={NotFound}></Route>
           </Switch>

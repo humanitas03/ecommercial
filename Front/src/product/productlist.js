@@ -1,5 +1,6 @@
 import React,{ Component }  from 'react';
 import './productlist.css';
+import { Link, NavLink } from 'react-router-dom';
 class productlist extends Component{
 render() {
     return (
@@ -58,7 +59,7 @@ render() {
 											<div class="favorite favorite_left"></div>
 											<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
 											<div class="product_info">
-												<h6 class="product_name"><a href="single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
+												<h6 class="product_name"><a href="single.html"><NavLink to="/productdetail">상품 상세보기</NavLink></a></h6>
 												<div class="product_price">$520.00<span>$590.00</span></div>
 											</div>
 										</div>
