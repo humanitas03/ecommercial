@@ -11,7 +11,7 @@ render() {
                             <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
                                 <div class="single_product_thumbnails">
                                     <ul>
-                                    
+ 
                                         <li><img src={require('./product01.jpg')} width="550px" height="500px" /></li>
                                     </ul>
                                 </div>
