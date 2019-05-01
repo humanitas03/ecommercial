@@ -21,6 +21,7 @@ import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
 import productlist from '../product/productlist';
 import productdetail from '../product/productdetail';
+import adminproductinsert from '../user/admin/adminproductinsert';
 
 class App extends Component {
   constructor(props) {
@@ -89,6 +90,7 @@ class App extends Component {
             <Route path="/board" component={board}></Route>
             <Route path="/productlist" component={productlist}></Route>
             <Route path="/productdetail" component={productdetail}></Route>
+            <Route path="/adminproductinsert" component={adminproductinsert}></Route>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
             <Route component={NotFound}></Route>
           </Switch>

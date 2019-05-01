@@ -80,7 +80,7 @@ class AppHeader extends Component {
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
                                         <li><a href="/"><h2>메인</h2></a></li>
-                                        <li><a href="/"><h2>판매</h2></a></li>
+                                        <li><NavLink to="adminproductinsert"><h2>판매</h2></NavLink></li>
                                         <li><NavLink to="/board"><h2>커뮤니티</h2></NavLink></li>
                                         <li><NavLink to="/productlist"><h2>리뷰</h2></NavLink></li>
                                         <li><a href="/"><h2>blog</h2></a></li>
