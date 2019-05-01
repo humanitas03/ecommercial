@@ -65,11 +65,11 @@ public class AuthController {
     @Autowired
     RoleRepository roleRepository;
     
-	@Autowired
-	private EmailSender emailSender;
+//	@Autowired
+//	private EmailSender emailSender;
 
-	@Autowired
-	private Email email;
+//	@Autowired
+//	private Email email;
     /**
 	 * 사용자 로그인
 	 * @param locale

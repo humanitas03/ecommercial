@@ -24,7 +24,7 @@ import lombok.ToString;
 @ToString
 public class EmailConfirmVO extends DateAudit{
 		
-		@Id
+		@Id 
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 		@ApiModelProperty(value="순서")
 	    private Long id;

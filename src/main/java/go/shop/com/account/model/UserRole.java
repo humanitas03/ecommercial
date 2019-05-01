@@ -8,4 +8,4 @@ package go.shop.com.account.model;
 public enum UserRole {
 	User,
 	Admin
-}
+} 

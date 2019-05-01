@@ -17,6 +17,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import go.shop.com.common.model.audit.DateAudit;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,11 +28,9 @@ import lombok.Setter;
 */
 @Entity
 @Table(name = "user_history")
-@Setter
-@Getter
-@AllArgsConstructor 
+@Data
 public class UserHistory extends DateAudit{
-	
+	  
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

@@ -17,7 +17,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
  * href="http://www.thymeleaf.org/doc/articles/springmail.html">http://www.thymeleaf.org/doc/articles/springmail.html</a>
  * * @see <a *
  * href="http://stackoverflow.com/questions/25610281/spring-boot-sending-emails-using-thymeleaf-as-template-configuration-does-not">http://stackoverflow.com/questions/25610281/spring-boot-sending-emails-using-thymeleaf-as-template-configuration-does-not</a>
- */
+ */ 
 
 @Data
 @Configuration

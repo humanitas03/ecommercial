@@ -109,4 +109,4 @@ render() {
     }
 }
 
-export default productlist;
+export default productlist; 

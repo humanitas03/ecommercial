@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Profile.css';
-
+import { NavLink } from 'react-router-dom';
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -25,6 +25,7 @@ class Profile extends Component {
                         <div className="profile-name">
                            <h2>{this.props.currentUser.name}</h2>
                            <p className="profile-email">{this.props.currentUser.email}</p>
+                           <h2>{this.props.currentUser.roles["0"].name=='Admin'?<NavLink to="adminproductinsert">상품 등록페이지로</NavLink>:''}</h2>
                         </div>
                     </div>
                 </div>    

@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import go.shop.com.common.model.audit.DateAudit;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,8 +36,7 @@ import lombok.Setter;
 @Table(name = "ecomusers", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
 })
-@Setter
-@Getter
+@Data
 public class User extends DateAudit{
    
 	@Id

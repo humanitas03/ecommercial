@@ -12,11 +12,11 @@ import lombok.ToString;
 * @version 2019.04.10 v1.0
 */
 @Getter
-@Setter
+@Setter 
 @ToString
 @Component
 public class Email {
-
+ 
 	private String subject;
     private String content;
     private String receiver;

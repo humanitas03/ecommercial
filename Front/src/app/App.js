@@ -5,11 +5,11 @@ import {
 } from 'react-router-dom';
 import AppHeader from '../common/AppHeader';
 import Home from '../home/Home';
-import Login from '../user/login/Login';
-import Signup from '../user/signup/Signup';
-import board  from '../board/board'
-import Profile from '../user/profile/Profile';
-import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
+import Login from '../components/user/login/Login';
+import Signup from '../components/user/signup/Signup';
+import board  from '../components/board/board'
+import Profile from '../components/user/profile/Profile';
+import OAuth2RedirectHandler from '../components/user/oauth2/OAuth2RedirectHandler';
 import NotFound from '../common/NotFound';
 import LoadingIndicator from '../common/LoadingIndicator';
 import { getCurrentUser } from '../util/APIUtils';
@@ -19,9 +19,9 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
-import productlist from '../product/productlist';
-import productdetail from '../product/productdetail';
-import adminproductinsert from '../user/admin/adminproductinsert';
+import productlist from '../components/product/productlist';
+import adminproductinsert from '../components/user/admin/adminproductinsert';
+import productdetail from '../components/product/productdetail';
 
 class App extends Component {
   constructor(props) {

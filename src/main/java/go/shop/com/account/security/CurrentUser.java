@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 
 @Target({ElementType.PARAMETER, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Documented
+@Documented 
 @AuthenticationPrincipal
 public @interface CurrentUser {
 
