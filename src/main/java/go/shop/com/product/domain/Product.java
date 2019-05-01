@@ -10,6 +10,11 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+* @author 김여
+* @version 2019.04.30 v1.0
+*/
+
 @Entity
 @Table(name="tb_bike")
 @Getter
