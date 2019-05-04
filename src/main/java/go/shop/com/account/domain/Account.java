@@ -21,7 +21,7 @@ public class Account {
 	@Column(name="account_seq")
 	private Long accountSeq;
 	
-	@Column(name="account_id")
+	@Column(name="account_id", unique=true)
 	private String accountId;
 	
 	@Column(name="account_pwd")

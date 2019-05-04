@@ -20,7 +20,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Product {
-
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="bike_seq")

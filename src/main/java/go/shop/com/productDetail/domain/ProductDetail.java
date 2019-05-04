@@ -5,8 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import go.shop.com.product.domain.Product;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +24,11 @@ public class ProductDetail {
 	@Column(name="bike_detail_seq")
 	private Long bikeDetailSeq;
 	
-	@Column(name="bike_seq")
-	private Long bikeSeq;
+//	@Column(name="bike_seq")
+//	private Long bikeSeq;
+	@ManyToOne
+	@JoinColumn(name = "bike_seq", referencedColumnName = "bike_seq")
+	private Product product;
 	
 	@Column(name="bike_detail_distance")
 	private String bikeDetailDistance;

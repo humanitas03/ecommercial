@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -21,8 +23,12 @@ public class AccountHistory {
 	@Column(name="account_hist_seq")
 	private Long accountHistSeq;
 	
-	@Column(name="account_seq")
-	private Long accountSeq;
+//	@Column(name="account_seq")
+//	private Long accountSeq;
+	
+	@OneToOne
+	@JoinColumn(name = "account_Seq", referencedColumnName = "account_Seq")
+	private Account account;
 	
 	@Column(name="account_url")
 	private String accountUrl;
