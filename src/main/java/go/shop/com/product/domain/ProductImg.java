@@ -9,20 +9,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Table(name="tb_bike_img")
-@Getter
-@Setter
-public class ProductOrigImg {
+@Data
+public class ProductImg {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="bike_img_seq")
 	private Long origImgSeq;
-	
+	 
 //	@Column(name="bike_seq")
 //	private Long bikeSeq;
 	
@@ -49,6 +49,24 @@ public class ProductOrigImg {
 
 	@Column(nullable = false, name = "bike_img_filetype")
 	private String fileType;
+
+	public ProductImg(Long origImgSeq, Product product, String origImgUrl, Long category, String path,
+			String originalFileName, String storedFileName, Long size, String fileType) {
+		super();
+		this.origImgSeq = origImgSeq;
+		this.product = product;
+		this.origImgUrl = origImgUrl;
+		this.category = category;
+		this.path = path;
+		this.originalFileName = originalFileName;
+		this.storedFileName = storedFileName;
+		this.size = size;
+		this.fileType = fileType;
+	}
+
+	public ProductImg() {
+		// TODO Auto-generated constructor stub
+	}
 
 
 }

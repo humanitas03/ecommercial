@@ -12,6 +12,7 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+                
     security:
       oauth2:
         client:
@@ -75,3 +76,7 @@ multipart:
   max-file-size: 100Mb
   max-request-size: 100Mb
   file-size-threshold: 10Mb
+## File Storage Properties
+# Please change this to the path where you want the uploaded files to be stored.
+#file:
+#      upload-dir : /ecommercial/Front/src/ImageFile
