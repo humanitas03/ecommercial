@@ -49,7 +49,7 @@ public class ProductDetail {
 	private String bikeDetailColor;
 
 	@Column(name="bike_detail_user_price")
-	private String bikeDetailUserPrice;
+	private Long bikeDetailUserPrice;
 	
 	@Column(name="bike_detail_region")
 	private String bikeDetailRegion;

@@ -36,7 +36,7 @@ public class Product {
 	private String bikeCc;
 	
 	@Column(name="bike_orig_price")
-	private String bikeOrigPrice;
+	private Long bikeOrigPrice;
 	
 	@Column(name="bike_brand")
 	private String bikeBrand;
