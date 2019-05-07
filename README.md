@@ -56,5 +56,5 @@ go/shop/com/product/vo		-- domain 이외에 vo로 사용해야할 패키지.
 > 4. 기본키는 BigInteger 에 Autoincrement로 관리한다.  
 > 5. name,content,title 과 같은 공통적인 컬럼이라 생각되는 경우 접두어를 제외한 테이블 명을 덧붙인다. ex) member_name  
 
-
-
+## Issue
+@issue : bsp repo
