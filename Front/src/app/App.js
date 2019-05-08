@@ -23,6 +23,8 @@ import productlist from '../components/product/productlist';
 import adminproductinsert from '../components/user/admin/adminproductinsert';
 import productdetail from '../components/product/productdetail';
 import chatroom from '../components/user/chat/chatroom';
+import userlist from '../components/user/chat/userlist';
+import usertimeline from '../components/user/chat/usertimeline';
 
 class App extends Component {
   constructor(props) {
@@ -93,6 +95,8 @@ class App extends Component {
             <Route path="/productdetail" component={productdetail}></Route>
             <Route path="/adminproductinsert" component={adminproductinsert}></Route>
             <Route path="/chatroom" component={chatroom}></Route>
+            <Route path="/userlist" component={userlist}></Route>
+            <Route path="/usertimeline" component={usertimeline}></Route>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
             <Route component={NotFound}></Route>
           </Switch> 
