@@ -22,6 +22,7 @@ import './App.css';
 import productlist from '../components/product/productlist';
 import adminproductinsert from '../components/user/admin/adminproductinsert';
 import productdetail from '../components/product/productdetail';
+import chatroom from '../components/user/chat/chatroom';
 
 class App extends Component {
   constructor(props) {
@@ -91,9 +92,10 @@ class App extends Component {
             <Route path="/productlist" component={productlist}></Route>
             <Route path="/productdetail" component={productdetail}></Route>
             <Route path="/adminproductinsert" component={adminproductinsert}></Route>
+            <Route path="/chatroom" component={chatroom}></Route>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
             <Route component={NotFound}></Route>
-          </Switch>
+          </Switch> 
         </div>
         <Alert stack={{limit: 3}} 
           timeout = {3000}

@@ -84,7 +84,7 @@ class AppHeader extends Component {
                                         <li><NavLink to="/board"><h2>커뮤니티</h2></NavLink></li>
                                         <li><NavLink to="/productlist"><h2>리뷰</h2></NavLink></li>
                                         <li><a href="/"><h2>blog</h2></a></li>
-                                        <li><a href="contact.html">contact</a></li>
+                                        <li><NavLink to="/chatroom"><a href="contact.html">웹소켓테스트</a></NavLink></li>
                                     </ul>
                                     <ul class="navbar_user">
                                         <li><a href="/"><i class="fa fa-search" aria-hidden="true"></i></a></li>
