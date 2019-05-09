@@ -1,6 +1,5 @@
 package go.shop.com.product.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,16 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-import org.springframework.context.annotation.Primary;
-
-import go.shop.com.productDetail.domain.ProductDetail;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
 * @author 최성
@@ -27,9 +19,8 @@ import lombok.Setter;
 */
 
 @Entity
-@Table(name="tb_bikeinfoengine")
-@Setter
-@Getter
+@Table(name="tb_bike_info_engine")
+@Data
 public class BikeInfoEngine {
 
 	@Id

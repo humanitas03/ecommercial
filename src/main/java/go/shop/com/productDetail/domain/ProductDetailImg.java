@@ -1,4 +1,4 @@
-package go.shop.com.product.domain;
+package go.shop.com.productDetail.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,24 +9,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import go.shop.com.productDetail.domain.ProductDetail;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
-@Table(name="tb_bike_img")
+@Table(name="tb_bike_detail_img")
 @Data
 @AllArgsConstructor
-public class ProductImg {
+public class ProductDetailImg {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="bike_detail_img_seq")
 	private Long bikeDetailImgSeq;
 	 
-//	@Column(name="bike_seq")
-//	private Long bikeSeq;
-	
 	@OneToOne
 	@JoinColumn(name = "bike_detail_seq", referencedColumnName = "bike_detail_seq")
 	private ProductDetail productDetail;
@@ -53,7 +49,7 @@ public class ProductImg {
 
 	
 
-	public ProductImg() {
+	public ProductDetailImg() {
 		// TODO Auto-generated constructor stub
 	}
 
