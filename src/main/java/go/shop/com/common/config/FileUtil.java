@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import go.shop.com.product.domain.ProductImg;
@@ -14,26 +16,31 @@ import go.shop.com.product.domain.ProductImg;
 * @author 최성준 
 * @version 2019.05.05 v1.0
 */
+@Service
 public class FileUtil {
 	 /**
      * 파일 업로드.
      */
-    public List<ProductImg> saveAllFiles(List<MultipartFile> upfiles) {
-        String filePath = "/ecommercial/Front/src/ImageFile"; 
-        List<ProductImg> filelist = new ArrayList<ProductImg>();
+	private final String rootPath 	= System.getProperty("user.dir");
+	private final String filePath = rootPath + "/Front/src/ImageFile";
+	
+    public List<ProductImg> saveAllFiles(List<MultipartFile> upfiles) throws IllegalStateException, IOException {
+         
+        final List<ProductImg> filelist = new ArrayList<ProductImg>();
 
         for (MultipartFile uploadfile : upfiles ) {
             if (uploadfile.getSize() == 0) {
                 continue;
             }
+            final String fileExt		= uploadfile.getOriginalFilename().split("\\.")[1];
+            final String folder			= getFolderName();
+            final String newFileName 	= getFileName() + "." + fileExt;
             
-            String newName = getNewName();
-            
-            saveFile(uploadfile, filePath + "/" + newName.substring(0,4) + "/", newName);
+            saveFile(uploadfile, filePath + "/" + folder + "/", newFileName);
             
             ProductImg filedo = new ProductImg();
             filedo.setOriginalFileName(uploadfile.getOriginalFilename());
-            filedo.setStoredFileName(newName);
+            filedo.setStoredFileName(newFileName);
             filedo.setSize(uploadfile.getSize());
             filelist.add(filedo);
         }
@@ -52,8 +59,10 @@ public class FileUtil {
 
     /**
      * 실제 파일 저장.
+     * @throws IOException 
+     * @throws IllegalStateException 
      */
-    public String saveFile(MultipartFile file, String basePath, String fileName){
+    public String saveFile(MultipartFile file, String basePath, String fileName) throws IllegalStateException, IOException{
         if (file == null || file.getName().equals("") || file.getSize() < 1) {
             return null;
         }
@@ -62,13 +71,9 @@ public class FileUtil {
         String serverFullPath = basePath + fileName;
   
         File file1 = new File(serverFullPath);
-        try {
-            file.transferTo(file1);
-        } catch (IllegalStateException ex) {
-            System.out.println("IllegalStateException: " + ex.toString());
-        } catch (IOException ex) {
-            System.out.println("IOException: " + ex.toString());
-        }
+        
+        file.transferTo(file1);
+        
         
         return serverFullPath;
     }
@@ -76,10 +81,15 @@ public class FileUtil {
     /**
      * 날짜로 새로운 파일명 부여.
      */
-    public String getNewName() {
-        SimpleDateFormat ft = new SimpleDateFormat("yyyyMMddhhmmssSSS");
-        return ft.format(new Date()) + (int) (Math.random() * 10);
+    public String getFolderName() {
+        SimpleDateFormat ft = new SimpleDateFormat("yyyyMMdd");
+        return ft.format(new Date());
     }
+    
+    public String getFileName() {
+        return UUID.randomUUID().toString();
+    }
+    
     
     public String getFileExtension(String filename) {
           Integer mid = filename.lastIndexOf(".");
