@@ -4,6 +4,7 @@ import {
   Switch
 } from 'react-router-dom';
 import AppHeader from '../common/AppHeader';
+import Footer from '../common/Footer';
 import Home from '../home/Home';
 import Login from '../components/user/login/Login';
 import Signup from '../components/user/signup/Signup';
@@ -113,6 +114,7 @@ class App extends Component {
         <Alert stack={{limit: 3}} 
           timeout = {3000}
           position='top-right' effect='slide' offset={65} />
+        <Footer></Footer>
       </div>
     );
   }
