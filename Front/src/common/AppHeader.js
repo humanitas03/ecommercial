@@ -36,7 +36,7 @@ class AppHeader extends Component {
                             <div className="pull-left">
                                 {/* <!-- Logo --> */}
                                 <div className="header-logo">
-                                    <a className="logo" href="#">
+                                    <a className="logo" href="/">
                                         <img src="/style/img/logo.png" alt=""/>
                                     </a>
                                 </div>
