@@ -19,6 +19,7 @@ class adminproductinsert extends Component{
   }
 
   _delete(){
+    // 어케 삭제하지...? 흠....... 고민좀.
     console.log("aaaaa");
   }
 
