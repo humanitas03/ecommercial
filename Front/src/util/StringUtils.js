@@ -1,5 +1,15 @@
 /**
  * Created by Lee jin Hyeok on 2019-05-11
+ * 
+ * <pre>
+ * It is based on open source and does <strong>not have responsibility</strong>
+ * for secondary processing.
+ * </pre>
+ * 
+ * @author Lee jin hyeok
+ * @create_by 2019-05-11
+ * @description javascript string utils
+ * @license Open-source license 1.0
  */
 var stringUtils = {
     //공백 제거
