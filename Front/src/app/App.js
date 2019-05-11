@@ -26,6 +26,12 @@ import chatroom from '../components/user/chat/chatroom';
 import userlist from '../components/user/chat/userlist';
 import usertimeline from '../components/user/chat/usertimeline';
 
+
+
+
+
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -77,29 +83,32 @@ class App extends Component {
     }
 
     return (
-      <div className="app">
-        <div className="app-top-box">
-          <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout} />
-        </div>
+      <div>
+        <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout} />
+        
         <div className="app-body">
-          <Switch>
-            <Route exact path="/" component={Home}></Route>           
-            <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-              component={Profile}></PrivateRoute>
-            <Route path="/login"
-              render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
-            <Route path="/signup"
-              render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
-            <Route path="/board" component={board}></Route>
-            <Route path="/productlist" component={productlist}></Route>
-            <Route path="/productdetail" component={productdetail}></Route>
-            <Route path="/adminproductinsert" component={adminproductinsert}></Route>
-            <Route path="/chatroom" component={chatroom}></Route>
-            <Route path="/userlist" component={userlist}></Route>
-            <Route path="/usertimeline" component={usertimeline}></Route>
-            <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
-            <Route component={NotFound}></Route>
-          </Switch> 
+          <div className="row">
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Home}></Route>           
+                <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                  component={Profile}></PrivateRoute>
+                <Route path="/login"
+                  render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
+                <Route path="/signup"
+                  render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
+                <Route path="/board" component={board}></Route>
+                <Route path="/productlist" component={productlist}></Route>
+                <Route path="/productdetail" component={productdetail}></Route>
+                <Route path="/adminproductinsert" component={adminproductinsert}></Route>
+                <Route path="/chatroom" component={chatroom}></Route>
+                <Route path="/userlist" component={userlist}></Route>
+                <Route path="/usertimeline" component={usertimeline}></Route>
+                <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
+                <Route component={NotFound}></Route>
+              </Switch>
+            </div>
+          </div> 
         </div>
         <Alert stack={{limit: 3}} 
           timeout = {3000}

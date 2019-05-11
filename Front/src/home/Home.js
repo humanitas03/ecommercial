@@ -4,11 +4,11 @@ import tempimg from '../img/temp_img.jpg';
 class Home extends Component {
     render() {
         return (
-            <div className="home-container">
+            <div className="col-lg-12 text-center">
              
-                        <div className="home-center" >
+                        
                             <img src={tempimg} alt="tempimg" />
-                        </div>                    
+                        
                     <h1 className="home-title">WithBIke</h1>
                 
             </div>

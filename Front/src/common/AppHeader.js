@@ -1,113 +1,148 @@
-
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './AppHeader.css';
-import './styles/main_styles.css';
-import './styles/responsive.css';
-import './styles/bootstrap4/bootstrap.min.css';
-
-
+import AppNavigator from './AppNavigator';
 class AppHeader extends Component {
     render() {
         return (
-            <div class="super_container">
-            <header class="header trans_300">
-        
-                <div class="top_nav">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="top_nav_left">free shipping on all u.s orders over $50</div>
+            <React.Fragment>
+                <header>
+                    <div id="top-header">
+                        <div className="container">
+                            <div className="pull-left">
+                                free shipping on all u.s orders over $50
                             </div>
-                            <div class="col-md-6 text-right">
-                                <div class="top_nav_right">
-                                    <ul class="top_nav_menu">
-                                        <li class="currency">
-                                            
-                                            <ul class="currency_selection">
-                                                <li><a href="/">cad</a></li>
-                                                <li><a href="/">aud</a></li>
-                                                <li><a href="/">eur</a></li>
-                                                <li><a href="/">gbp</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="language">
-                                            <a href="/">
-                                                English
-                                                <i class="fa fa-angle-down"></i>
-                                            </a>
-                                            <ul class="language_selection">
-                                                <li><a href="/">French</a></li>
-                                                <li><a href="/">Italian</a></li>
-                                                <li><a href="/">German</a></li>
-                                                <li><a href="/">Spanish</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="account">
-                                            <a href="/"> 
-                                                회원페이지
-                                                <i class="fa fa-angle-down"></i>
-                                            </a>
-                                            
+                            <div className="pull-right">
+                                <ul className="header-top-links">
+                                <li><a href="#">Store</a></li>
+                                <li><a href="#">Newsletter</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                    <li className="dropdown default-dropdown">
+                                        <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i className="fa fa-caret-down"></i></a>
+                                        <ul className="custom-menu">
+                                            <li><a href="#">English (ENG)</a></li>
+                                            <li><a href="#">Russian (Ru)</a></li>
+                                            <li><a href="#">French (FR)</a></li>
+                                            <li><a href="#">Spanish (Es)</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="header">
+                        <div className="container">
+                            <div className="pull-left">
+                                {/* <!-- Logo --> */}
+                                <div className="header-logo">
+                                    <a className="logo" href="#">
+                                        <img src="/style/img/logo.png" alt=""/>
+                                    </a>
+                                </div>
+                                {/* <!-- /Logo --> */}
+
+                                {/* <!-- Search --> */}
+                                <div className="header-search">
+                                    <form>
+                                        <input className="input search-input" type="text" placeholder="Enter your keyword" />
+                                        <select className="input search-categories">
+                                            <option value="0">All Categories</option>
+                                            <option value="1">Category 01</option>
+                                            <option value="1">Category 02</option>
+                                        </select>
+                                        <button type="button" className="search-btn"><i className="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                                {/* <!-- /Search --> */}
+                            </div>
+                            <div className="pull-right">
+                                <ul className="header-btns">
+                                    {/* <!-- Account --> */}
+                                    <li className="header-account dropdown default-dropdown">
+                                        <div className="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                                            <div className="header-btns-icon">
+                                                <i className="fa fa-user-o"></i>
+                                            </div>
+                                            <strong className="text-uppercase">My Account <i className="fa fa-caret-down"></i></strong>
+                                        </div>
+                                        <a href="#" className="text-uppercase">Login</a> / <a href="#" className="text-uppercase">Join</a>
+                                        <ul className="custom-menu">
+
                                             { this.props.authenticated ? (
-                                            <ul class="account_selection">
-                                                <li><NavLink to="/profile">Profile</NavLink> </li>
-                                                <li> <a onClick={this.props.onLogout}>Logout</a></li>
-                                                <li><NavLink to="/MyInfo">내정보</NavLink> </li>
-                                                </ul>
-                                                ):(
-                                                    <ul class="account_selection">
-                                                    <li>  <NavLink to="/login">로그인<i class="fa fa-sign-in" aria-hidden="true"></i></NavLink> </li>
-                                                    <li><NavLink to="/signup">가입<i class="fa fa-user-plus" aria-hidden="true"></i></NavLink></li>
-                                                    </ul>
-                                                )}
-                                                
-                                        </li>
-                                    </ul>
-                                </div>
+                                                <React.Fragment>
+                                                    <li><NavLink to="/profile"><i className="fa fa-user-o"></i>Profile</NavLink> </li>
+                                                    <li><a onClick={this.props.onLogout}><i className="fa fa-check"></i> Logout</a></li>
+                                                    <li><a to="/MyInfo"><i className="fa fa-exchange"></i>My Account</a></li>
+                                                </React.Fragment>   
+                                                    ):(
+                                                <React.Fragment>        
+                                                    <li>  <NavLink to="/login"><i className="fa fa-unlock-alt"></i>Login</NavLink> </li>
+                                                    <li><NavLink to="/signup"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up</NavLink></li>
+                                                </React.Fragment>
+                                            )}
+                                        </ul>
+                                    </li>
+                                    {/* <!-- /Account --> */}
+
+                                    {/* <!-- Cart --> */}
+                                    <li className="header-cart dropdown default-dropdown">
+                                        <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                            <div className="header-btns-icon">
+                                                <i className="fa fa-heart"></i>
+                                                <span className="qty">3</span>
+                                            </div>
+                                            <strong className="text-uppercase">My Wish:</strong>
+                                            <br/>
+                                            <span>5 ea</span>
+                                        </a>
+                                        <div className="custom-menu">
+                                            <div id="shopping-cart">
+                                                <div className="shopping-cart-list">
+                                                    <div className="product product-widget">
+                                                        <div className="product-thumb">
+                                                            <img src="./style/img/thumb-product01.jpg" alt="" />
+                                                        </div>
+                                                        <div className="product-body">
+                                                            <h3 className="product-price">$32.50 <span className="qty">x3</span></h3>
+                                                            <h2 className="product-name"><a href="#">Product Name Goes Here</a></h2>
+                                                        </div>
+                                                        <button className="cancel-btn"><i className="fa fa-trash"></i></button>
+                                                    </div>
+                                                    <div className="product product-widget">
+                                                        <div className="product-thumb">
+                                                            <img src="./style/img/thumb-product01.jpg" alt="" />
+                                                        </div>
+                                                        <div className="product-body">
+                                                            <h3 className="product-price">$32.50 <span className="qty">x3</span></h3>
+                                                            <h2 className="product-name"><a href="#">Product Name Goes Here</a></h2>
+                                                        </div>
+                                                        <button className="cancel-btn"><i className="fa fa-trash"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div className="shopping-cart-btns">
+                                                    <button className="main-btn">View Cart</button>
+                                                    <button className="primary-btn">Checkout <i className="fa fa-arrow-circle-right"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {/* <!-- /Cart --> */}
+
+                                    {/* <!-- Mobile nav toggle--> */}
+                                    <li className="nav-toggle">
+                                        <button className="nav-toggle-btn main-btn icon-btn"><i className="fa fa-bars"></i></button>
+                                    </li>
+                                    {/* <!-- / Mobile nav toggle --> */}
+                                </ul>
                             </div>
                         </div>
+                        {/* <!-- header --> */}
                     </div>
-                </div>
-        
-                <div class="main_nav_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
-                                <div class="logo_container">
-                                    <a href="/">colo<span>shop</span></a>
-                                </div>
-                                <nav class="navbar">
-                                    <ul class="navbar_menu">
-                                        <li><a href="/"><h2>메인</h2></a></li>
-                                        <li><NavLink to="adminproductinsert"><h2>판매</h2></NavLink></li>
-                                        <li><NavLink to="/board"><h2>커뮤니티</h2></NavLink></li>
-                                        <li><NavLink to="/productlist"><h2>리뷰</h2></NavLink></li>
-                                        <li><a href="/"><h2>blog</h2></a></li>
-                                        <li><NavLink to="/userlist"><a href="contact.html">유저리스트(웹소켓테스트)</a></NavLink></li>
-                                    </ul>
-                                    <ul class="navbar_user">
-                                        <li><a href="/"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                        <li><a href="/"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                                        <li class="checkout">
-                                            <a href="/">
-                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span id="checkout_items" class="checkout_items">2</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="hamburger_container">
-                                        <i class="fa fa-bars" aria-hidden="true"></i>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-            </header>
-        
-        </div>
+                    
+                </header>
+                <AppNavigator></AppNavigator>
+            </React.Fragment>
         )
     }
 }

@@ -5,14 +5,14 @@
 .s-alert-close::before, .s-alert-close::after {
     width: 2px;
 }
+/* 
+@import "../style/css/bootstrap.min.css";
 
-.app {
-    height: 100%;
-}
-.app-top-box {
-    height: 150px;
-}
-.app-body {
-    padding-top: 50px;
-    height: 100%;
-}
+
+
+@import '../style/css/slick.css';
+@import '../style/css/slick-theme.css';
+@import '../style/css/nouislider.min.css';
+@import '../style/css/font-awesome.min.css';
+@import '../style/css/style.css';
+ */
