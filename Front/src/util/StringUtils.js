@@ -10,55 +10,132 @@
  * @create_by 2019-05-11
  * @description javascript string utils
  * @license Open-source license 1.0
+ * 
+ * @information
  */
+
+ 
 var stringUtils = {
-    //공백 제거
+
+    /**
+     * <pre>
+     * 인자로 넘어온 값의 공백을 제거
+     * </pre>
+     * @param {String} str 
+     */
     trim : function (str) {
         return str.replace(/^\s+|\s+$/g,'');
     },
-    //empty 체크
+
+    /**
+     * <pre>
+     * 인자로 넘어온 값의 빈값을 검사
+     * </pre>
+     * @param {String} strValue 
+     */
     isEmpty: function (strValue) {
         return strValue == undefined || strValue == null || strValue == '' || strValue == 'empty' ? true : false;
     },
-    //notEmpty 체크
+
+    /**
+     * <pre>
+     * 인자로 넘어온 값의 값 존재 여부를 판별 한다.
+     * </pre>
+     * @param {String} strValue 
+     */
     isNotEmpty: function (strValue) {
         return stringUtils.isEmpty(strValue) == false ? true : false;
     },
-    //empty일때 기본값 표시
+
+    /**
+     * <pre>
+     * 인자로 넘어온 값의 값이 빈 값일 경우 기본값을 표기
+     * </pre>
+     * @param {String} strValue  확인 할 값
+     * @param {String} defaultValue 빈 값 일 경우 바인딩
+     */
     defaultIfEmpty: function (strValue, defaultValue) {
         defaultValue = stringUtils.isEmpty(defaultValue) ? '' : defaultValue;
         return stringUtils.isEmpty(strValue) ? defaultValue : strValue;
     },
-    //문자열에서 구분자 왼쪽만 가져오기
+
+    /**
+     * <pre>
+     * 인자로 넘어온 문자열에서 구분자를 사용하여 왼쪽부터 추출
+     * </pre>
+     * 
+     * @param {String} sourceStr 추출 할 문자열 
+     * @param {Char} findStr 구분자
+     */
     left : function (sourceStr, findStr) {
         var index = sourceStr.indexOf(findStr);
         if(index < 0) {	return ""; }
         else { return (sourceStr.substring(0, index)); }
     },
-    //문자열에서 구분자 오른쪽만 가져오기
+
+    /**
+     * <pre>
+     * 인자로 넘어온 문자열에서 구분자를 사용하여 오른쪽부터 추출
+     * </pre>
+     * 
+     * @param {String} sourceStr 추출 할 문자열 
+     * @param {Char} findStr 구분자
+     */
     right : function (sourceStr, findStr) {
         var index = sourceStr.indexOf(findStr);
         if(index < 0) { return ""; }
         else { var len = sourceStr.length; return (sourceStr.substring(index+findStr.length, len)); }
     },
+
+    /**
+     * <pre>
+     * 인자로 넘어온 문자열에서 구분자를 사용하여 왼쪽부터 역으로 추출
+     * </pre>
+     * 
+     * @param {String} sourceStr 추출 할 문자열 
+     * @param {Char} findStr 구분자
+     */
     rightBack : function (sourceStr, findStr){
         var index = sourceStr.lastIndexOf(findStr);
         if (index < 0) { return ""; }
         else { return (sourceStr.substring(index+findStr.length, sourceStr.length)); }
     },
-    //문자열에서 왼쪽에서부터 인덱스(1부터 ~ ) 만큼 가져오기
+
+    /**
+     * <pre>
+     * 인자로 넘어온 문자열에서 인덱스를 사용하여 왼쪽 부터 추출
+     * </pre>
+     * 
+     * @param {String} sourceStr 추출 할 문자열 
+     * @param {int} idx 인덱스
+     */
     leftIndex : function (sourceStr, idx) {
         if (idx <= 0) { return ""; }
         else if (idx > String(sourceStr).length) { return sourceStr; }
         else { return String(sourceStr).substring(0, idx); }
     },
-    //문자열에서 오른쪽에서부터 인덱스(1부터 ~ ) 만큼 가져오기
+
+    /**
+     * <pre>
+     * 인자로 넘어온 문자열에서 인덱스를 사용하여 오른쪽 부터 추출
+     * </pre>
+     * 
+     * @param {String} sourceStr 추출 할 문자열 
+     * @param {int} idx 인덱스
+     */
     rightIndex : function (sourceStr, idx) {
         if (idx <= 0) { return ""; }
         else if (idx > String(sourceStr).length) { return sourceStr; }
         else { var len = String(sourceStr).length; return String(sourceStr).substring(len, len - idx); }
     },
-    //숫자 3째자리에 콤마붙이기
+
+    /**
+     * <pre>
+     * 자리 수 마다 표기법에 따른 콤마 기호를 생성하여 반환
+     * </pre>
+     * 
+     * @param {String} m 기호 반영에 참여 할 문자열
+     */
     fnCommaFormat : function (m){
         var a,b;
         if (m.toString().indexOf('.') != -1) {
@@ -69,17 +146,41 @@ var stringUtils = {
         }
         return a.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + b;
     },
+
+    /**
+     * <pre>
+     * 빈 값일 경우 해당 두번째로 넘어온 인자를 반환 (nvl2 version ex)
+     * </pre>
+     * 
+     * @param {String} str 확인 할 문자열
+     * @param {String} def 기본 값
+     */
     defaultString : function(str, def) {
         if(this.isEmpty(def)) {
             def = '';
         }
         return this.isEmpty(str) ? def : str;
     },
-    //세자리수 마다 콤마처리 + 원
+
+    /**
+     * <pre>
+     * 세자리수 마다 콤마처리 + 원을 추가 하여 처리
+     * </pre>
+     * 
+     * @param {String} m 확인 할 문자열
+     */
     fnWonFormat : function (m){
         return this.defaultString(this.fnCommaFormat(m), "0")+" 원";
     },
-    //숫자앞 digits만큼 0붙이기
+
+    /**
+     * <pre>
+     * 인자로 넘어온 값에 추가적으로 digits 숫자 만큼의 0을 추가 하여 처리
+     * </pre>
+     * 
+     * @param {String} n 추가 할 값
+     * @param {Number} digits 추가 할 가중치
+     */
     leadingZeros : function (n, digits) {
         var zero = '';
         n = n.toString();
@@ -90,18 +191,15 @@ var stringUtils = {
         }
         return zero + n;
     },
-    isTelnumber : function (s) {
-        var regExp = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;	// -대쉬 필수
-        //var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;	// - 대쉬 옵션
 
-        if (!regExp.test(s)) {
-            return false;
-        } else {
-            return true;
-        }
-
-    },
-    //숫자 3째자리에 콤마붙이기, 소수점 기본 할당 또는 소수점 표현자리수 지정
+    /**
+     * <pre>
+     * 숫자 3째자리에 콤마붙이기, 소수점 기본 할당 또는 소수점 표현자리수 지정
+     * </pre>
+     * 
+     * @param {Number:String} m 변환 할 값
+     * @param {Number} s 소수 단위 처리 (기본값은 정수)
+     */
     fnCommaDecimalFormat : function (m, s){
         if(m === undefined || m == null) {return "-";}
         if(s === undefined){
@@ -118,7 +216,16 @@ var stringUtils = {
 
         return a.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + b;
     },
-    //콤마, 단위환산, 소수점 처리, 원 처리
+
+    /**
+     * <pre>
+     * 인자로 넘어온 값을 확인 하여 콤마(',') 처리 및
+     * 추가적으로 <strong>원</strong> 단위 처리
+     * </pre>
+     * 
+     * @param {Number:String} m 변환 할 값
+     * @param {Number} s 소수 단위 처리 (기본값은 정수)
+     */
     fnUnitChangeAndCommaFormat : function (m, s){
         if(m === undefined || m == null) 
         {
@@ -175,7 +282,13 @@ var stringUtils = {
         returnValue.push(unit);
         return  returnValue;
     },
-    // 숫자만 입력
+
+    /**
+     * <pre>
+     * 인자로 넘어온 값이 숫자인지를 판별
+     * </pre>
+     * @param {Number} s 확인 할 숫자 값
+     */
     isNumber : function(s){
         var regExp = /^[0-9]+$/;
         if (!regExp.test(s)) {
@@ -184,7 +297,14 @@ var stringUtils = {
             return true;
         }
     },
-    // 제이슨 타입으로 타입 치환
+
+    /**
+     * <pre>
+     * 인자로 넘어온 값을 제이슨 타입으로 타입 치환
+     * </pre>
+     * 
+     * @param {*} $form 
+     */
     formDataToJsonStr: function($form){
         var unindexed_array = $form.serializeArray();
         var indexed_array = {};
@@ -196,6 +316,16 @@ var stringUtils = {
 
         return indexed_array;
     },
+
+    /**
+     * <pre>
+     * 인자로 넘어온 전체 항목에 관하여 replace 처리
+     * </pre>
+     * 
+     * @param {*} 수정 할 인자
+     * @param {Char} 확인 할 문자
+     * @param {Char} 수정 할 문자
+     */
     replaceAll : function (str, searchStr, replaceStr) {
         return str.split(searchStr).join(replaceStr);
     }

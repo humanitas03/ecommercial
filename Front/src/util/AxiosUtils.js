@@ -10,15 +10,21 @@
  * @create_by 2019-05-11
  * @description javascript array utils
  * @license Open-source license 1.0
+ * 
+ * @information
  */
 
-import axios     from 'axios'
+import axios       from 'axios'
+import objectUtils from './ObjectUtils';
 
 /** 서버측 경로를 설정 한다.*/
-const host       = 'localhost';
+const host       = 'http://localhost';
 const port       = '8080'
 
 const serverHTTP = host+':'+port;
+
+console.dir(serverHTTP);
+
 
 /**
  * <pre>
@@ -27,52 +33,107 @@ const serverHTTP = host+':'+port;
  * </pre>
  */
 const instanse = axios.create({
-  baseURL: serverHTTP
+    baseURL: serverHTTP
 });
 
+var axiosUtils = ((e) => {
 
-var axiosUtils = {
+    
+    /**
+     * <pre>
+     * 후 처리를 위한 이벤트 처리 항목
+     * </pre>
+     * @param {Object} o 후 처리를 위한 판정 객체
+     */
+    function _axiosEventHandler (o){
+        
+    };
 
-    handlerError : (error, c) => {
-        console.debug(e.response.status + ' Not Found Error');
-        if(c) c(error, data);
-    },
+    /**
+     * <pre>
+     * 에러 처리를 위한 에러 이벤트 함수
+     * </pre>
+     * @param {Error} error 에러 처리를 할 객체
+     * @param {Function} c 사용자 콜백 이벤트 핸들러
+     */
+    function _handlerError(error, c) {
 
-    handlerSuccess : (data, c) => {
-        console.debug(e.response.status + ' Success');
-        if(c) c(e);
-    },
+        // Axios의 공통 이벤트 핸들링 처리
+        _axiosEventHandler(c);
+
+        if(c) c(error);
+
+        console.debug(error);
+    }
+
+    /**
+     * 
+     * @param {Object} data 데이터 처리를 위한 데이터 객체
+     * @param {Function} c 사용자 콜백 이벤트 핸들러
+     */
+    function _handlerSuccess (data, c) {
+
+        // Axios의 공통 이벤트 핸들링 처리
+        _axiosEventHandler(c);
+
+        if(c) c(data);
+    }
+
     /**
     * <pre>
     * GET 메서드를 호출 하여 통신을 처리 한다.
     * </pre>
     * options
     * @member {String} url 서버와 매핑할 url
-    * @member {Object} option XMLHttpRequests 통신 시에 사용할 옵션 값(head 처리) 
+    * @member {Object} option XMLHttpRequests 통신 시에 사용할 옵션 값 (head 처리) 
     */
-    $get : (options, param, callback) => {
+    function _get (options, param, callback) {
 
-        const { url
-              , option } = options;
+        if(objectUtils.isObject(options)) {
+            var { url, option } = options;
+
+        } else {
+
+            var url = options;
+            option  = {};
+        }
 
         // 기본 값을 매핑한다
-        url = url||'/';
+        url    = url    ||'/';
+        param  = param  || {};
+        option = option || {};
 
-        instanse.get(url)
-                .then()
+        // 동기화 처리를 위한 동기화 변수를 할당 (작업 중)
+        var dialogTimer = option.sync == null ? false : option.sync;
 
-        
-        axios.get('http://localhost:8080/product/listTest', {params : {nowPage:nowPage, itemCnt: itemCnt}}).then(
-            data => {
+        // 데이터 통신 처리
+        instanse.get(url, {params : param}).then( data => {
 
+            _handlerSuccess(data, callback);
+            dialogTimer = false;
+        }).catch( e =>{
+
+            _handlerError(e, callback);
+            dialogTimer = false;
+        });
+
+        // 동기 통신을 위한 wait 처리
+        while(dialogTimer) {
+            setTimeout(()=>{console.dir('wait...')}, 500);
         }
-    
-    },
-
-    $post : (e, t, e) => {
 
     }
-}
+
+    function _post (e, t, v) {
+
+    }
+
+    return {
+        $get  : _get,
+        $post : _post
+    }
+})();
+
 
 /**
  * Request Wrapper with default success/error actions
@@ -107,4 +168,4 @@ const request = function(options) {
             .catch(onError);
 }
 
-export default request;
+export default axiosUtils;
