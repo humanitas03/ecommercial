@@ -18,6 +18,9 @@
     "react-scripts": "1.1.5",
     "react-slick": "^0.24.0",
     "reactstrap": "^7.1.0",
+    "redux": "^4.0.1",
+    "redux-form": "^8.2.0",
+    "redux-thunk": "^2.3.0",
     "yarn": "^1.15.2"
   },
   "scripts": {

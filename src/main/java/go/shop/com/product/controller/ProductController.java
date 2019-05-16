@@ -24,10 +24,15 @@ public class ProductController {
 	@Autowired
 	ProductRepository productRepository;
 	
-	@PostMapping("/add")
+	@PostMapping("/insert")
 	public Product createProduct(@RequestBody Product product) {
-		return productRepository.save(product);
+		
+		System.out.println("Product List+++++++++");
+		System.out.println(product);
+		return null;
+		//return productRepository.save(product);
 	}
+	
 	
 	@GetMapping("/list")
 	public List<Product> getAllProduct(){

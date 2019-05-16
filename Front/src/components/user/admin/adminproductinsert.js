@@ -1,8 +1,18 @@
 import React,{ Component }  from 'react';
 import './adminproductinsert.css';
+import { connect } from 'react-redux';
+import { addProduct } from '../../../action/productActions';
 
 class adminproductinsert extends Component{
-  
+  constructor(props){
+      super(props);
+      this.onbikeNameChange = this.onbikeNameChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+         this.state = {
+            bikeName: ''
+ 
+        };
+  }
   _uploadFile = () => {
     const uploadImgText = document.getElementById('uploadImgText');
     const arrFiles       = document.getElementById('inputFile').files;
@@ -17,10 +27,25 @@ class adminproductinsert extends Component{
     }
     uploadImgText.innerHTML=text;
   }
-
+  onbikeNameChange(e) {
+        const bikeName = e.target.value;
+        this.setState(() => ({ bikeName: bikeName }));
+    }
   _delete(){
     // 어케 삭제하지...? 흠....... 고민좀.
     console.log("aaaaa");
+  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    const product=this.state;
+    console.log(product);
+    this.props.addProduct(product);
+
+    // Add item via addItem action
+
+
+    // Close Modal
+
   }
 
   render(){
@@ -32,10 +57,12 @@ class adminproductinsert extends Component{
             <h5>판매 > BIKE INFO <small></small></h5>
           </div>
           <div className="ibox-content">
-            <form className="form-horizontal">
+            <form className="form-horizontal" onSubmit={this.onSubmit}>
               <input type="hidden" name="bikeSeq" />
               <div className="form-group"><label className="col-sm-2 control-label">바이크 명</label>
-                <div className="col-sm-4"><input type="text" className="form-control" name="bikeName"/></div>
+                <div className="col-sm-4"><input type="text" className="form-control" name="bikeName"
+                  value={this.state.bikeName}
+                    onChange={this.onbikeNameChange}/></div>
                 <label className="col-sm-2 control-label">배기량</label>
                 <div className="col-sm-4"><input type="text" className="form-control" name="bikeCc"/></div>
               </div>
@@ -114,8 +141,13 @@ class adminproductinsert extends Component{
         </div>
 
       </React.Fragment>
-    
     );
   }
 }
-export default adminproductinsert;
+const mapStateToProps = (state) => ({
+  product: state.product
+})
+
+export default connect(mapStateToProps, { addProduct })(adminproductinsert);
+
+// export default adminproductinsert;
