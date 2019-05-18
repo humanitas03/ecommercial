@@ -12,9 +12,9 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import go.shop.com.account.domain.AuthProvider;
+import go.shop.com.account.domain.User;
 import go.shop.com.account.exception.OAuth2AuthenticationProcessingException;
-import go.shop.com.account.model.AuthProvider;
-import go.shop.com.account.model.User;
 import go.shop.com.account.repository.UserRepository;
 import go.shop.com.account.security.UserPrincipal;
 import go.shop.com.account.security.oauth2.user.OAuth2UserInfo;

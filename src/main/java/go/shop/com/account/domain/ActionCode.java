@@ -1,4 +1,4 @@
-package go.shop.com.account.model;
+package go.shop.com.account.domain;
 
 /**
 * 액션코드

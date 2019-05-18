@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
-import go.shop.com.account.model.Email;
-import go.shop.com.account.model.User;
+import go.shop.com.account.domain.Email;
+import go.shop.com.account.domain.User;
 
 @Component
 public class EmailSender {

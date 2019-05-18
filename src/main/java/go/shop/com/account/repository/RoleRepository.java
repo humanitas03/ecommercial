@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import go.shop.com.account.model.Role;
-import go.shop.com.account.model.UserRole;
+import go.shop.com.account.domain.Role;
+import go.shop.com.account.domain.UserRole;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {

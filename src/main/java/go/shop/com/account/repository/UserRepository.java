@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import go.shop.com.account.model.User;
-import go.shop.com.account.model.UserHistory;
-import go.shop.com.account.model.mail.EmailConfirmVO;
+import go.shop.com.account.domain.EmailConfirmVO;
+import go.shop.com.account.domain.User;
+import go.shop.com.account.domain.UserHistory;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

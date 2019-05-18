@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import go.shop.com.account.domain.User;
 import go.shop.com.account.exception.ResourceNotFoundException;
-import go.shop.com.account.model.User;
 import go.shop.com.account.repository.UserRepository;
 
 /**

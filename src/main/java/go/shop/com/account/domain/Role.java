@@ -1,4 +1,4 @@
-package go.shop.com.account.model;
+package go.shop.com.account.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -3,8 +3,8 @@ package go.shop.com.account.security.oauth2.user;
 
 import java.util.Map;
 
+import go.shop.com.account.domain.AuthProvider;
 import go.shop.com.account.exception.OAuth2AuthenticationProcessingException;
-import go.shop.com.account.model.AuthProvider;
 
 public class OAuth2UserInfoFactory {
 
