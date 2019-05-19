@@ -1,0 +1,18 @@
+.s-alert-box {
+    min-width: 250px;
+}
+
+.s-alert-close::before, .s-alert-close::after {
+    width: 2px;
+}
+/* 
+@import "../style/css/bootstrap.min.css";
+
+
+
+@import '../style/css/slick.css';
+@import '../style/css/slick-theme.css';
+@import '../style/css/nouislider.min.css';
+@import '../style/css/font-awesome.min.css';
+@import '../style/css/style.css';
+ */
