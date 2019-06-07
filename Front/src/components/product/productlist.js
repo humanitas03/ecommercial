@@ -1,7 +1,11 @@
+//
+
 import React,{ Component }  from 'react';
 import './productlist.css';
 import { Link, NavLink } from 'react-router-dom';
+
 class productlist extends Component{
+	
 render() {
     return (
         <div class="main_content">

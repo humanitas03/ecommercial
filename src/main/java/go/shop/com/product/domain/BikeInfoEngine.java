@@ -44,6 +44,8 @@ public class BikeInfoEngine {
 	private String Exhaust;
 	@Column(name="bikeinfo_transmission")
 	private String Transmission;
+	
+	
 	@OneToOne
 	@JoinColumn(name = "bike_seq")
 	private Product product;

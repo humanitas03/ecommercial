@@ -3,9 +3,11 @@ import './adminproductinsert.css';
 import { connect } from 'react-redux';
 import { addProduct } from '../../../action/productActions';
 
+
 class adminproductinsert extends Component{
   constructor(props){
       super(props);
+    
       this.onbikeNameChange = this.onbikeNameChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
          this.state = {
@@ -35,12 +37,15 @@ class adminproductinsert extends Component{
     // 어케 삭제하지...? 흠....... 고민좀.
     console.log("aaaaa");
   }
+
   onSubmit = (e) => {
     e.preventDefault();
     const product=this.state;
-    console.log(product);
-    this.props.addProduct(product);
+    
+    console.log(this.props.state.products);
 
+    
+    this.props.addProduct(product);
     // Add item via addItem action
 
 
@@ -49,7 +54,10 @@ class adminproductinsert extends Component{
   }
 
   render(){
+    const {product} = this.props.product;
+    
     return(
+     
 
       <React.Fragment>
         <div className="ibox float-e-margins">
@@ -145,7 +153,7 @@ class adminproductinsert extends Component{
   }
 }
 const mapStateToProps = (state) => ({
-  product: state.product
+  products: state.products
 })
 
 export default connect(mapStateToProps, { addProduct })(adminproductinsert);

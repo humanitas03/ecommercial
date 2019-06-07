@@ -1,8 +1,49 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import './AppHeader.css';
 import AppNavigator from './AppNavigator';
+import {Modal, Button} from 'react-bootstrap';
+import 'react-overlays';
+
+import Login from '../components/user/login/Login';
+
+
 class AppHeader extends Component {
+
+    constructor(props, context) {
+        super(props, context);
+    
+        this.handleShowLogin = this.handleShowLogin.bind(this);
+        this.handleCloseLogin = this.handleCloseLogin.bind(this);
+    
+        
+      }
+
+    state = {
+        show : false,
+    };
+
+    //클릭시 login modal 출력
+    handleShowLogin(){
+        console.log("On Clicked Login : ", this.state.show);
+        console.log("this Props : ", this.props);
+
+        this.setState({ show : !this.state.show }, ()=>{console.log("this state : ", this.state);});
+        
+        console.log("On Clicked Login after : ", this.state.show);
+    }
+
+    handleCloseLogin(){
+        this.setState({ show : false });
+       
+        return <Redirect
+            to={{
+            pathname: "/",
+            state: { from: this.props.location }
+        }}/>;            
+      
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -66,7 +107,10 @@ class AppHeader extends Component {
                                             </div>
                                             <strong className="text-uppercase">My Account <i className="fa fa-caret-down"></i></strong>
                                         </div>
-                                        <a href="#" className="text-uppercase">Login</a> / <a href="#" className="text-uppercase">Join</a>
+
+                                        <a onClick={this.handleShowLogin} className="text-uppercase">Login</a> / <a href="#" className="text-uppercase">Join</a>
+                                            
+
                                         <ul className="custom-menu">
 
                                             { this.props.authenticated ? (
@@ -77,7 +121,12 @@ class AppHeader extends Component {
                                                 </React.Fragment>   
                                                     ):(
                                                 <React.Fragment>        
-                                                    <li>  <NavLink to="/login"><i className="fa fa-unlock-alt"></i>Login</NavLink> </li>
+                                                    <li onClick={this.handleShowLogin}>  
+                                                        <NavLink to="/login">
+                                                            <i className="fa fa-unlock-alt"></i>Login
+                                                        </NavLink> 
+                                                    </li>
+
                                                     <li><NavLink to="/signup"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up</NavLink></li>
                                                 </React.Fragment>
                                             )}
@@ -139,10 +188,27 @@ class AppHeader extends Component {
                         </div>
                         {/* <!-- header --> */}
                     </div>
-                    
                 </header>
-                <AppNavigator></AppNavigator>
+
+                {/* <AppNavigator></AppNavigator> */}
+                
+                {/* <React.Fragment> */}
+                <Modal show={this.state.show} onHide={this.handleCloseLogin} animation={false}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Login Modal</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Login
+                            modalShow = {this.state.show}
+                        />
+                    </Modal.Body>                               
+                </Modal>
+                {/* </React.Fragment> */}
             </React.Fragment>
+
+            
+      
+            
         )
     }
 }

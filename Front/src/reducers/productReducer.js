@@ -10,8 +10,8 @@ export default function(state = initialState, action) {
   
     case ADD_PRODUCT:
       return {
-        ...state,
-        products: [action.payload, ...state.products]
+        //...state,
+        products: [...action.payload]
       }
   
     default:

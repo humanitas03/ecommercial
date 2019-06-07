@@ -39,6 +39,7 @@ class Profile extends Component {
         let user = this.state
         console.log(user)
         console.log("files+++++++++")
+        // axios.post('http://localhost:8080/updateUser/' + user.id, user)
         axios.post('http://localhost:8080/updateUser/' + user.id, user)
             .then(res => console.log(res.data))
     }
