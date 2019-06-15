@@ -25,7 +25,7 @@ class Signup extends Component {
                     <SocialSignup />
                     <div className="or-separator">
                         <span className="or-text">OR</span>
-                    </div>
+                    </div>                    
                     <SignupForm {...this.props} />
                     <span className="login-link">Already have an account? <Link to="/login">Login!</Link></span>
                 </div>

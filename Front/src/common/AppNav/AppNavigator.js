@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import AppNavigatorSlick from './AppNavigatorSlick';
+
 class AppNavigator extends Component {
     render() {
         return (
@@ -115,6 +117,7 @@ class AppNavigator extends Component {
                                         <li><a href="#">Bags &amp; Shoes</a></li>
                                         </ul>
                                     </div>
+                                    
                                     <div className="col-md-4 hidden-sm hidden-xs">
                                         <a className="banner banner-2" href="#">
                                         <img src="./style/img/banner04.jpg" alt />
